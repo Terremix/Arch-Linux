@@ -1,0 +1,10 @@
+[Unit]
+Description=scroll-lock
+
+[Service]
+ExecStart=~/.config/qtile/scripts/scroll-lock
+StandardInput=tty
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

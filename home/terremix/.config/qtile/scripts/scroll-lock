@@ -1,0 +1,8 @@
+#!/bin/bash
+#Script creado por Facus para encender el LED del Scroll Lock
+on=$(xset -q | grep 'Scroll Lock:' | cut -d ":" -f 7)
+if [ $on == "off" ]; then
+xset led named "Scroll Lock";
+else
+xset -led named "Scroll Lock";
+fi
