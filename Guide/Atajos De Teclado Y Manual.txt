@@ -1,0 +1,114 @@
+ACTUALIZAR SISTEMA
+
+# Paca actualizar el sistema usar este comando
+
+sudo paru -Syyu
+sudo paru -Syyu --devel --aur 
+
+# Para actualizar los repositorios de github utilizar estos comandos 
+
+git checkout master
+
+git pull
+
+
+ATAJOS DE TELCADO
+
+
+# FUNCIONES DEL SISTEMA 
+(Son comandos especiales creados en el archivo /home/mike/.zshrc )
+
+mkt							# Crea varias carpetas para organizar la informacion de las maquinas HackTheBox
+rmk 							# Es un "rm" que deja menos rastro para los analisis forenses
+extractPorts						# Extrae los puertos de nmap y te los anañade al portapapeles
+
+Crear + a tu gusto)
+
+
+# ATAJOS GENERALES (W = atajo valido windows)
+
+Win   + Tab						# (W) Cambiar de escritorio
+alt   + Tab				  		# (W) Cambiar de ventana 
+ctrl  + (flechas de movimiento) 			# Movimiento entre palabras
+shift + (flechas de movimiento) 			# Seleccionar texto 
+shift + ctrl + (flechas de movimiento)    		# Seleccionar palabras enteras
+
+
+# ATAJOS DE QTILE
+
+
+ABIR APLICACIONES 
+
+mod + Enter                               		# Abre terminal
+mod + B                                   		# Abre el navegador
+mod + M                                   		# Abre rofi
+mod + D  						# Abre discord
+mod + S							# Abre spotify
+mod + A							# Abre el buscador de archivos
+
+
+CAPTURAS DE PANTALLA
+
+mod + x							# Captura de pantalla
+mod + shift + x						# Captura recortable
+
+
+ROFI 
+
+mod + M 						# Abre rofi
+mod + shift + M						# Muestra aplicaciones abiertas
+
+
+# GESTOR DE VENTANAS
+
+
+QTILE
+
+mod + (numero del escritorio)  				# Moverte a otro escritorio
+mod + shift + (numero del escritotio)  			# Mandar la aplicacion seleecionada al escritorio con el numero pulsado 
+mod + shift + R 					# Recarga el gestor de ventanas
+mod + space  						# Cambia la distribucion de ventanas
+mod + Tab  						# Cambia a la siguiente ventana
+mod + Q							# Cierra sesion
+
+
+# ATAJOS DE KITTY
+
+PESTAÑAS
+
+ctrl + shift + Enter  					# Crea nueva terminal en la misma ventana
+alt  + (cualquier flecha) 				# Movimiento entre ventanas
+ctrl + (cualquiier flecha)				# Movimiento entre palabras
+ctrl + space                              		# Hace zoom en la ventana seleccionada
+ctrl + shift + (felchas)	            		# Cambia el tamaño de la terminal actual segun la flecha
+ctrl + Shift + L                          		# Cambiar distribucion de las terminales en misma ventana
+
+
+VENTANAS
+
+ctrl + shift + T                          		# Crea nueva terminal en otra ventana 
+ctrl + shift + Q                          	# Elimina la pestaña seleccionada 
+ctrl + shift + W 					# Eliminar ventana
+ctrl + shift (, y .)                      # Para moverte entre pestañas
+ctrl + shift + Alt + T                    # Cambiar nombre de la pestaña
+alt  + shift + (flechas del teclado)	# Moverte entre ventanas
+ctrl + Tab						# Moverte entre venatanas hacia delante
+ctrl + shift + Tab				# Moverte entre ventanas hacia atras
+
+
+COMANDOS VARIOS
+
+ctrl + L  						# Limpia el terminal
+ctrl + T						# Es un buscador de archivos (te encuentra la ruta)
+ctrl + R						# Es un buscaodr de comandos que ya hayas usado
+
+
+# ATAJOS NAVEGADOR
+
+ctrl + T						# Crear nueva pestaña
+ctrl + Tab						# Mover siguiente pestaña
+ctrl + shift + Tab				# Mover anterior pestaña
+ctrl + F4						# Cerrrar pestaña actual
+alt  + (number)					# Mover a la pestaña indicada
+alt  + flecha izquierda				# Restroceder en la pestaña
+alt  + flecha derecha				# Volver a un punto despues de retroceder 

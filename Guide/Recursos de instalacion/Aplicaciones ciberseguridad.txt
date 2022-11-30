@@ -1,0 +1,12 @@
+APLICACIONES DE CIBERSEGURIDAD PARA INSTALAR
+
+Nmap
+burpsuite
+Wifite
+
+
+GitHub
+
+SecList
+
+(Mirar carpeta de SEGURIDAD)

@@ -1,0 +1,230 @@
+INSTALACION DE APLICACIONES ESPECIALES
+
+
+LIGHTDM
+
+# Vamos a instalar temas y fondos para el lightdm, en este caso el tema aether
+
+# https://github.com/NoiSek/Aether#installation
+
+pacman -S lightdm-webkit2-greeter
+
+paru -S lightdm-webkit-theme-aether
+
+git clone https://github.com/NoiSek/Aether.git
+sudo cp --recursive Aether /usr/share/lightdm-webkit/themes/Aether
+
+sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+
+sudo sed -i 's/^\(#?greeter\)-session\s*=\s*\(.*\)/greeter-session = lightdm-webkit2-greeter #\1/ #\2g' /etc/lightdm/lightdm.conf
+
+# Para cambiar el icono de cada usuario es en "/var/lib/AccountsService/users" y ahi modifican el archivo donde pone "Icon" y colocan la ruta del png
+
+
+AUR
+
+# Sirve para tener mayor rango de instalacion, para ello ejecutamos el comando
+
+git clone https://aur.archlinux.org/paru-bin.git
+
+
+# Entrar en el dicrectorio que se crea despues de eso
+
+cd paru-bin
+makepkg -si 	# Se ejecutara una instalacion
+
+
+BLACK ARCH
+
+# Crear (opccionalmente) un directorio para el black arch
+mkdir blackarch
+cd !$
+
+# Instalamos los repositorios
+curl -O https://blackarch.org/strap.sh
+
+# Le damos permisos de ejecucion al archivo
+chmod +x strap.sh
+
+# Y lo ejecutamos
+sudo su
+./strap.sh
+
+
+ZSHRC
+
+sudo pacman -S zsh
+wget sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo $SHELL
+sudo su
+usermod --shel /usr/bin/zsh mike
+exit
+exit
+
+# Puedes usar el archivo de s4vitar en (s4vitar.github.io)
+# Buscar en bspwn su archivo de la zsh, revisarlo y configurarlo (el archivo es ~/.zshrc)
+# Puedes usar de guia su video de instalacion 
+# Paquetes de zsh interesantes: (mirar instalacion de cada paquete)
+
+paru -S  # Para instalarlos
+zsh-sysntax-highlighting
+zsh-autosuggestions
+
+# Ahora para instalar el pluggin de sudo tendremos que descarnos un archivo
+# https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
+
+sudo su
+cd /usr/share
+mkdir zsh-sudo
+chow (tu usuario):(tu grupo) zsh-sudo/
+cd !$
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
+
+# Sera necesario instalar lsd y bat si elegiste el archivo de s4vitar 
+# Aun si no lo hiciste es recomendable isntalar dichas herramientas de forma independiente
+
+# Vamos a instalar los paquetes de github de la p10k
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+
+# Luego de esto vamos a una terminal y ejecutamos el comando:
+zsh
+
+# Reconfigurar el powerlevel10k
+p10k configure 
+
+# Una vez instalada en el usuario principal hay que crear un link simbolico al usuario root
+ln -s /home/mike/.zshrc /root/.zshrc
+
+# Modificar el archivo ".p10k.zsh" para personalizar los mensajes de la derecha
+# Poner en las primeras lineas "context" en el archivo de root para que salga un mensaje cada vez que seas root
+# Ese mensaje se coloca en la linea que contenga "ROOT_TEMPLATE"
+
+# Es posible que en el .zshrc se generen un "~source...theme", elimina esas lineas y si da problemas reinstala el powerlevel10k
+
+# Para las busquedas especiales con "ctrl + T (para buscar archivos)" y "ctrl + R (para comandos antiguos)" ejecutamos lo siguiente
+
+pacman -S fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Esto tiene que hacerse con todos los usuarios del sistema para que funcione (mike, terremix y root) 
+
+
+
+SCRUB
+
+# Herramienta que sirve para eliminar archivos de forma mas definitiva complicando los analisis forenses
+# Para instalarlo:
+
+paru -S scrub
+
+# Para usarla se escribe el comando (si tienes el archivo .zsgrc de s4vitar,  si no lo tienes que configurar):
+
+rmk
+
+
+
+AUDIO
+
+# Pagina de ayuda (https://0and6.wordpress.com/2016/12/27/activar-audio-y-reproducir-musica-y-videos-en-archlinux/)
+
+sudo pacman -S alsa-utils alsa-plugins alsa-oss
+
+# Para abrir los canales de audio debemos ejecutar la herramiente «alsamixer», los canales Master y PCM los pondremos a funcionar 
+# Y la ganancia de decibelos(numeros en amarillo) los pondremos en cero, para movernos ocuparemos las flechas del teclado y para activar 
+# Los canales presionamos la tecla m de modo que diga ’00’ y no ‘MM’
+
+alsamixer   		# F6 para elegir tarjeta de audio
+
+sudo alsactl store 	# Para guardar la configuracion
+
+sudo alsactl init	# Al terminar para arrancar el sistema 
+
+# Para guardar la configuracion puesta en el alsamixer
+
+# Si no funciona el microfono revisar que el canal este en 4ch 
+
+
+
+NOTIFY
+
+# Herramienta de mensajes para el sistema
+
+sudo pacman -S notification-daemon libnotify
+nano /usr/share/dbus-1/services/org.freedesktop.Notifications.service 	# Pegar lo siguiente
+
+[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/usr/lib/notification-daemon-1.0/notification-daemon
+
+
+
+PIPER
+
+# Es un controlador grafico para el raton, permite cambiar sensibilidad, color del led, etc.
+
+pacman -S piper
+piper
+
+
+
+TECLAS ESPECIALES
+
+# Configurar tecla para apagar la luz (Bloq Despl)
+
+xmodmap -pm 
+
+xmodmap -e "add mod3 = Scroll_Lock" 
+
+
+ROFI
+
+# Para instalar rofi simplemente hay que usar el comando
+
+pacman -S rofi
+
+# Ahora para ponerle temas y que se vea bonito hay que hacer lo siguiente
+# Ir a github y descargarse estos repositorios
+
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+
+# Entramos en la carpeta y ejecutamos el "setup.sh" como root
+
+chmod +x setup.sh
+
+sudo ./setup.sh
+
+# Al ejecutar este comando se creara una carpeta especial de rofi para el usuario aparte de la actual
+# Esta carpeta se creara en ~/.cofig/ . OJO CON ESO
+
+# Ahora entramos en "files/launchers/" y elegimos el tema que queramos (Hay muestras en el github)
+# Una vez tengamos el archivo que queramos lo tenemos que mover a:
+
+cp -r ~/rofi/files/launchers/type*/style*.rasi /usr/share/rofi/themes/
+
+# Ejecutamos el comando
+
+rofi-theme-selector
+
+# Para cambiar al nuevo tema 
+
+
+
+DISCORD
+
+# Discord es facil de instalar con el simple comando
+
+pacman -S discord  # O discord-canary dependiendo de las versiones
+
+# Pero cada cierto tiempo tendras que actualizarlo manualmente, entonces te bajas el archivo que te indicaran al intentar iniciarlo (.tar.gz)
+# Y tienes que descomprimirlo
+
+tar -xf (el archivo)
+
+# Y moverlo a la ruta /opt/Discord
+
+mv ~/Downloads/Discord /opt/Discord
+
+# Si da error simplemente borra el archivo que deberia estar ahi previamente y repite  
