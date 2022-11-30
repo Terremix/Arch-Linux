@@ -1,2 +1,2 @@
 # dotfiles
- dotfiles of qtile
+read the guide
