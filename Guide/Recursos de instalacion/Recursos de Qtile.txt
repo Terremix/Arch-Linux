@@ -33,7 +33,7 @@ neofetch		Simplemente mola
 volumeicon		Simbolo de sonido
 zsh			Terminal
 xorg			Gestor de inicio de sesion
-bar			Cat pero mas bonito
+bat			Cat pero mas bonito
 lsd 			Ls pero mas bonito
 
 
