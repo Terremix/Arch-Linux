@@ -25,7 +25,7 @@ thunar                  Buscador de archivos
 gimp                    Editor de imagen
 picom                   Compositor de imagen
 alxappearance           Gestor de temas grafico
-xinit			Gestor de inicio de sesion
+xinit  Gestor de inicio de sesion
 python-pip		Gestor de programas de python
 xorg-xinit		Gestor de inicio de sesion
 pulseaudio		Gestor de sonido
@@ -33,6 +33,7 @@ neofetch		Simplemente mola
 volumeicon		Simbolo de sonido
 zsh			Terminal
 xorg			Gestor de inicio de sesion
+scrot  Gestor de capturas de pantalla
 bat			Cat pero mas bonito
 lsd 			Ls pero mas bonito
 
